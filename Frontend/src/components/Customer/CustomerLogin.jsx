@@ -1,13 +1,22 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import "./Customer.css";
 
 function CustomerLogin() {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] =
-    useState("");
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: ""
+  });
+
+  const handleChange = (e) => {
+    setLoginData({
+      ...loginData,
+      [e.target.name]: e.target.value
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,10 +24,7 @@ function CustomerLogin() {
     try {
       const response = await axios.post(
         "http://localhost:5000/customers/login",
-        {
-          email,
-          password
-        }
+        loginData
       );
 
       localStorage.setItem(
@@ -26,53 +32,63 @@ function CustomerLogin() {
         JSON.stringify(response.data)
       );
 
-      alert("Login Successful");
+      alert("Login Successful!");
 
       navigate("/reservationpage");
     } catch (error) {
       alert(
         error.response?.data?.message ||
-          "Login Failed"
+        "Invalid Email or Password"
       );
     }
   };
 
   return (
-    <div className="container">
-      <h2>Customer Login</h2>
+    <div className="customer-page">
+      <div className="customer-container">
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) =>
-            setEmail(e.target.value)
-          }
-          required
-        />
+        <h2>Customer Login</h2>
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) =>
-            setPassword(e.target.value)
-          }
-          required
-        />
+        <form
+          className="customer-form"
+          onSubmit={handleSubmit}
+        >
 
-        <button type="submit">
-          Login
-        </button>
-      </form>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            value={loginData.email}
+            onChange={handleChange}
+            required
+          />
 
-      <p>
-        Don't have an account?
-        <Link to="/customer/customerRegister">
-          Register
-        </Link>
-      </p>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={loginData.password}
+            onChange={handleChange}
+            required
+          />
+
+          <button
+            type="submit"
+            className="customer-btn"
+          >
+            Login
+          </button>
+
+        </form>
+
+        <p className="customer-footer">
+          Don't have an account?
+          <Link to="/customer/customerRegister">
+            Register
+          </Link>
+        </p>
+
+      </div>
     </div>
   );
 }

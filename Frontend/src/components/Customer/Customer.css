@@ -1,0 +1,118 @@
+/* Page Background */
+.customer-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1c1c1c, #7b1e3c);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Card */
+.customer-container {
+  width: 100%;
+  max-width: 500px;
+  background: rgba(28, 28, 28, 0.95);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Title */
+.customer-container h2 {
+  text-align: center;
+  color: #c9a24d;
+  margin-bottom: 30px;
+  font-size: 30px;
+  letter-spacing: 1px;
+}
+
+/* Form */
+.customer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Inputs */
+.customer-form input,
+.customer-form textarea {
+  width: 100%;
+  padding: 14px;
+  background: #1c1c1c;
+  border: 1px solid #333;
+  border-radius: 10px;
+  color: #f8f4ef;
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+
+.customer-form input::placeholder,
+.customer-form textarea::placeholder {
+  color: #9ca3af;
+}
+
+.customer-form input:focus,
+.customer-form textarea:focus {
+  outline: none;
+  border-color: #c9a24d;
+  box-shadow: 0 0 0 2px rgba(201, 162, 77, 0.2);
+}
+
+/* Textarea */
+.customer-form textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+/* Button */
+.customer-btn {
+  padding: 14px;
+  background: linear-gradient(
+    135deg,
+    #c9a24d,
+    #b08d3c
+  );
+  border: none;
+  border-radius: 30px;
+  color: #1c1c1c;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.customer-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(201, 162, 77, 0.4);
+}
+
+/* Bottom Text */
+.customer-footer {
+  text-align: center;
+  margin-top: 20px;
+  color: #9ca3af;
+}
+
+.customer-footer a {
+  color: #c9a24d;
+  text-decoration: none;
+  margin-left: 5px;
+  font-weight: 600;
+}
+
+.customer-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .customer-container {
+    padding: 25px;
+  }
+
+  .customer-container h2 {
+    font-size: 24px;
+  }
+}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import "./Customer.css";
 
 function CustomerRegister() {
   const navigate = useNavigate();
@@ -34,70 +35,88 @@ function CustomerRegister() {
         JSON.stringify(response.data)
       );
 
-      alert("Registration Successful");
+      alert("Registration Successful!");
 
       navigate("/reservationpage");
     } catch (error) {
       alert(
         error.response?.data?.message ||
-          "Registration Failed"
+        "Registration Failed"
       );
     }
   };
 
   return (
-    <div className="container">
-      <h2>Customer Registration</h2>
+    <div className="customer-page">
+      <div className="customer-container">
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Full Name"
-          onChange={handleChange}
-          required
-        />
+        <h2>Create Account</h2>
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          onChange={handleChange}
-          required
-        />
+        <form
+          className="customer-form"
+          onSubmit={handleSubmit}
+        >
 
-        <input
-          type="text"
-          name="phone"
-          placeholder="Phone"
-          onChange={handleChange}
-        />
+          <input
+            type="text"
+            name="name"
+            placeholder="Full Name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          onChange={handleChange}
-          required
-        />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
 
-        <textarea
-          name="address"
-          placeholder="Address"
-          onChange={handleChange}
-        />
+          <input
+            type="text"
+            name="phone"
+            placeholder="Phone Number"
+            value={formData.phone}
+            onChange={handleChange}
+            required
+          />
 
-        <button type="submit">
-          Register
-        </button>
-      </form>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
 
-      <p>
-        Already have an account?
-        <Link to="/customer/customerLogin">
-          Login
-        </Link>
-      </p>
+          <textarea
+            name="address"
+            placeholder="Address"
+            value={formData.address}
+            onChange={handleChange}
+          />
+
+          <button
+            type="submit"
+            className="customer-btn"
+          >
+            Register
+          </button>
+
+        </form>
+
+        <p className="customer-footer">
+          Already have an account?
+          <Link to="/customer/customerLogin">
+            Login
+          </Link>
+        </p>
+
+      </div>
     </div>
   );
 }
