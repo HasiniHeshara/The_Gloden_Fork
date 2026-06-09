@@ -1,0 +1,110 @@
+/* Page Background */
+.admin-reservations-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1c1c1c, #7b1e3c);
+  padding: 40px 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Container */
+.admin-reservations-container {
+  max-width: 1300px;
+  margin: auto;
+  background: rgba(28, 28, 28, 0.95);
+  border-radius: 18px;
+  padding: 35px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+}
+
+/* Title */
+.admin-reservations-title {
+  color: #c9a24d;
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+/* Table */
+.reservation-table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.reservation-table thead {
+  background: linear-gradient(135deg, #7b1e3c, #1c1c1c);
+}
+
+.reservation-table th {
+  padding: 16px;
+  color: #c9a24d;
+  text-align: left;
+  font-size: 14px;
+}
+
+.reservation-table td {
+  padding: 16px;
+  color: #f8f4ef;
+  border-bottom: 1px solid #333;
+}
+
+.reservation-table tbody tr:hover {
+  background: rgba(201, 162, 77, 0.08);
+}
+
+/* Status */
+.status-confirmed {
+  color: #4ade80;
+  font-weight: 600;
+}
+
+.status-pending {
+  color: #facc15;
+  font-weight: 600;
+}
+
+.status-cancelled {
+  color: #f87171;
+  font-weight: 600;
+}
+
+/* Buttons */
+.confirm-btn {
+  background: transparent;
+  border: 1px solid #c9a24d;
+  color: #c9a24d;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-right: 8px;
+  transition: 0.3s;
+}
+
+.confirm-btn:hover {
+  background: #c9a24d;
+  color: #1c1c1c;
+}
+
+.cancel-btn {
+  background: transparent;
+  border: 1px solid #7b1e3c;
+  color: #f87171;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cancel-btn:hover {
+  background: #7b1e3c;
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .reservation-table {
+    display: block;
+    overflow-x: auto;
+  }
+}

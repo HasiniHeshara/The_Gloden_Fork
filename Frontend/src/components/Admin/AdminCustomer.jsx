@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import "./AdminCustomers.css";
 
 function AdminCustomers() {
-
   const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
@@ -10,39 +10,62 @@ function AdminCustomers() {
   }, []);
 
   const fetchCustomers = async () => {
-    const res = await axios.get(
-      "http://localhost:5000/customers"
-    );
+    try {
+      const res = await axios.get(
+        "http://localhost:5000/customers"
+      );
 
-    setCustomers(res.data);
+      setCustomers(res.data);
+    } catch (error) {
+      console.error("Error fetching customers:", error);
+    }
   };
 
   return (
-    <div>
-      <h2>Customers</h2>
+    <div className="admin-customers-page">
+      <div className="admin-customers-container">
 
-      <table border="1">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Address</th>
-          </tr>
-        </thead>
+        <h2 className="admin-customers-title">
+          Customer Management
+        </h2>
 
-        <tbody>
-          {customers.map((customer) => (
-            <tr key={customer._id}>
-              <td>{customer.name}</td>
-              <td>{customer.email}</td>
-              <td>{customer.phone}</td>
-              <td>{customer.address}</td>
+        <table className="customers-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Address</th>
             </tr>
-          ))}
-        </tbody>
+          </thead>
 
-      </table>
+          <tbody>
+            {customers.length > 0 ? (
+              customers.map((customer) => (
+                <tr key={customer._id}>
+                  <td>{customer.name}</td>
+                  <td>{customer.email}</td>
+                  <td>{customer.phone}</td>
+                  <td>{customer.address}</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td
+                  colSpan="4"
+                  style={{
+                    textAlign: "center",
+                    padding: "20px"
+                  }}
+                >
+                  No customers found
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+
+      </div>
     </div>
   );
 }

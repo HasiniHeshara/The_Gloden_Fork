@@ -16,6 +16,13 @@ const Home = () => {
           <div className="hero-overlay">
             <h1>A Symphony of Flavor in Every Golden Bite.</h1>
             <p>Savor the Moment. Taste the Love.</p>
+              <Link
+                to="/reservationpage"
+                className="hero-btn"
+              >
+                Reserve Your Table
+              </Link>
+
           </div>
         </div>
 
@@ -53,6 +60,57 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      {/*FEEDBACK SECTION */}
+      <div className="testimonials-section">
+          <h2>What Our Guests Say</h2>
+
+          <div className="testimonials-container">
+
+            <div className="testimonial-card">
+              <p>
+                "Amazing atmosphere and delicious food. The service was excellent and the reservation process was very easy."
+              </p>
+              <div className="customer-info">
+                <span className="customer-name">
+                  - Sarah Perera
+                </span>
+                <span className="customer-rating">
+                  ⭐⭐⭐⭐⭐
+                </span>
+              </div>
+            </div>
+
+            <div className="testimonial-card">
+              <p>
+                "One of the best dining experiences I've had. Highly recommend the chef's special dishes."
+              </p>
+              <div className="customer-info">
+                <span className="customer-name">
+                  - Nimal Fernando
+                </span>
+                <span className="customer-rating">
+                  ⭐⭐⭐⭐⭐
+                </span>
+              </div>
+            </div>
+
+            <div className="testimonial-card">
+              <p>
+                "Beautiful interior, friendly staff, and great food. Definitely coming back again."
+              </p>
+              <div className="customer-info">
+                <span className="customer-name">
+                  - Amanda Silva
+                </span>
+                <span className="customer-rating">
+                  ⭐⭐⭐⭐☆
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
 
       {/* ABOUT SECTION */}
       <div className="about-section">

@@ -45,26 +45,29 @@ const Nav = () => {
         {!customer && (
           <>
             <li>
-              <Link to="/customer/customerLogin">
+              <Link
+                to="/customer/customerLogin"
+                className="auth-btn"
+              >
                 Login
               </Link>
             </li>
 
             <li>
-              <Link to="/customer/customerRegister">
+              <Link
+                to="/customer/customerRegister"
+                className="auth-btn"
+              >
                 Register
               </Link>
             </li>
           </>
         )}
 
-        {/* Show customer name + logout if logged in */}
+        {/*logout if logged in */}
         {customer && (
           <>
-            <li>
-              Welcome, {customer.name}
-            </li>
-
+        
             <li>
               <button
                 className="logout-btn"

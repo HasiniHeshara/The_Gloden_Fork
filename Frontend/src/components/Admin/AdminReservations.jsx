@@ -1,10 +1,10 @@
-// AdminReservations.jsx
-
 import { useEffect, useState } from "react";
 import axios from "axios";
+import "./AdminReservations.css";
 
 function AdminReservations() {
-  const [reservations, setReservations] = useState([]);
+  const [reservations, setReservations] =
+    useState([]);
 
   useEffect(() => {
     fetchReservations();
@@ -15,84 +15,147 @@ function AdminReservations() {
       const res = await axios.get(
         "http://localhost:5000/reservations"
       );
+
       setReservations(res.data);
     } catch (error) {
-      console.error(error);
+      console.error(
+        "Error fetching reservations:",
+        error
+      );
     }
   };
 
-  const updateStatus = async (id, status) => {
-  try {
-    await axios.put(
-      `http://localhost:5000/reservations/${id}/status`,
-      { status }
-    );
+  const updateStatus = async (
+    id,
+    status
+  ) => {
+    try {
+      await axios.put(
+        `http://localhost:5000/reservations/${id}/status`,
+        { status }
+      );
 
-    fetchReservations();
+      fetchReservations();
 
-  } catch (error) {
-    console.log(error);
-  }
-};
+      alert(
+        `Reservation ${status.toLowerCase()} successfully`
+      );
+    } catch (error) {
+      console.error(error);
+      alert("Failed to update reservation");
+    }
+  };
 
   return (
-    <div>
-      <h2>Reservations</h2>
+    <div className="admin-reservations-page">
+      <div className="admin-reservations-container">
 
-      <table border="1">
-        <thead>
-          <tr>
-            <th>Customer</th>
-            <th>Table</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Guests</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
+        <h2 className="admin-reservations-title">
+          Reservation Management
+        </h2>
 
-        <tbody>
-          {reservations.map((reservation) => (
-            <tr key={reservation._id}>
-              <td>
-                {reservation.customer?.name}
-              </td>
-              <td>{reservation.tableNumber}</td>
-              <td>{reservation.date}</td>
-              <td>{reservation.time}</td>
-              <td>{reservation.numberOfGuests}</td>
-              <td>{reservation.status}</td>
+        <table className="reservation-table">
+          <thead>
+            <tr>
+              <th>Customer</th>
+              <th>Table</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Guests</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {reservations.length > 0 ? (
+              reservations.map(
+                (reservation) => (
+                  <tr
+                    key={reservation._id}
+                  >
+                    <td>
+                      {reservation.customer
+                        ?.name || "N/A"}
+                    </td>
 
                     <td>
-                    <button
+                      {
+                        reservation.tableNumber
+                      }
+                    </td>
+
+                    <td>
+                      {reservation.date}
+                    </td>
+
+                    <td>
+                      {reservation.time}
+                    </td>
+
+                    <td>
+                      {
+                        reservation.numberOfGuests
+                      }
+                    </td>
+
+                    <td>
+                      <span
+                        className={`status-${reservation.status.toLowerCase()}`}
+                      >
+                        {
+                          reservation.status
+                        }
+                      </span>
+                    </td>
+
+                    <td>
+                      <button
+                        className="confirm-btn"
                         onClick={() =>
-                        updateStatus(
+                          updateStatus(
                             reservation._id,
                             "Confirmed"
-                        )
+                          )
                         }
-                    >
+                      >
                         Confirm
-                    </button>
+                      </button>
 
-                    <button
+                      <button
+                        className="cancel-btn"
                         onClick={() =>
-                        updateStatus(
+                          updateStatus(
                             reservation._id,
                             "Cancelled"
-                        )
+                          )
                         }
-                    >
+                      >
                         Cancel
-                    </button>
+                      </button>
                     </td>
-                                </tr>
-                            ))}
-                            </tbody>
-                        </table>
-                        </div>
-                    );
+                  </tr>
+                )
+              )
+            ) : (
+              <tr>
+                <td
+                  colSpan="7"
+                  style={{
+                    textAlign: "center",
+                    padding: "20px"
+                  }}
+                >
+                  No reservations found
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  );
 }
 
 export default AdminReservations;

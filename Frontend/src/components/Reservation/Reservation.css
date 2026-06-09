@@ -1,0 +1,106 @@
+/* Page Background */
+.reservation-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1c1c1c, #7b1e3c);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Reservation Card */
+.reservation-container {
+  width: 100%;
+  max-width: 550px;
+  background: rgba(28, 28, 28, 0.95);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Title */
+.reservation-container h1 {
+  color: #c9a24d;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 32px;
+  letter-spacing: 1px;
+}
+
+/* Form */
+.reservation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Inputs */
+.reservation-form input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  background: #1c1c1c;
+  color: #f8f4ef;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.reservation-form input::placeholder {
+  color: #9ca3af;
+}
+
+.reservation-form input:focus {
+  outline: none;
+  border-color: #c9a24d;
+  box-shadow: 0 0 0 2px rgba(201, 162, 77, 0.2);
+}
+
+/* Button */
+.reserve-btn {
+  margin-top: 10px;
+  padding: 14px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(
+    135deg,
+    #c9a24d,
+    #b08d3c
+  );
+  color: #1c1c1c;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.reserve-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(201, 162, 77, 0.4);
+}
+
+/* Customer Info */
+.customer-info-box {
+  background: rgba(201, 162, 77, 0.12);
+  border: 1px solid rgba(201, 162, 77, 0.3);
+  padding: 12px;
+  border-radius: 10px;
+  color: #f8f4ef;
+  margin-bottom: 20px;
+}
+
+.customer-info-box strong {
+  color: #c9a24d;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .reservation-container {
+    padding: 25px;
+  }
+
+  .reservation-container h1 {
+    font-size: 26px;
+  }
+}

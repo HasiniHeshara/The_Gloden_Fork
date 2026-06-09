@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import "./Reservation.css";
 
 function ReservationPage() {
   const customer = JSON.parse(
@@ -50,13 +51,21 @@ const [formData, setFormData] = useState({
   }
 };
 
-  return (
-    <div className="container">
+ return (
+  <div className="reservation-page">
+    <div className="reservation-container">
+
       <h1>Reserve a Table</h1>
 
-      <form onSubmit={handleSubmit}>
+      <div className="customer-info-box">
+        <strong>Customer:</strong> {customer.name}
+      </div>
 
-       
+      <form
+        className="reservation-form"
+        onSubmit={handleSubmit}
+      >
+
         <input
           type="number"
           name="tableNumber"
@@ -91,13 +100,18 @@ const [formData, setFormData] = useState({
           required
         />
 
-        <button type="submit">
+        <button
+          type="submit"
+          className="reserve-btn"
+        >
           Reserve Table
         </button>
 
       </form>
+
     </div>
-  );
+  </div>
+);
 }
 
 export default ReservationPage;

@@ -9,7 +9,10 @@
 
 .hero-overlay {
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.65),
+    rgba(123, 30, 60, 0.35)
+  );
   color: white;
   display: flex;
   flex-direction: column;
@@ -18,11 +21,36 @@
 }
 
 .hero-overlay h1 {
-  font-size: 42px;
+  font-size: 58px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 
 .hero-overlay p {
-  font-size: 18px;
+  font-size: 22px;
+  color: #f4d58d;
+  margin-top: 10px;
+}
+
+.hero-btn {
+  margin-top: 25px;
+  padding: 14px 30px;
+  background: linear-gradient(
+    135deg,
+    #c9a24d,
+    #f4d58d
+  );
+  color: #1c1c1c;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(201,162,77,0.5);
 }
 
 /* MAIN CONTENT */
@@ -49,48 +77,78 @@
 }
 
 .home-card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 20px;
-  width: 220px;
-  background-color: #fafafa;
+  width: 260px;
+  padding: 25px;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  transition: all 0.3s ease;
+}
+
+.home-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(123,30,60,0.25);
 }
 
 .home-btn {
   display: inline-block;
-  margin-top: 10px;
-  padding: 8px 15px;
-  background-color: #222;
-  color: white;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: linear-gradient(
+    135deg,
+    #c9a24d,
+    #f4d58d
+  );
+  color: #1c1c1c;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: 0.3s;
 }
 
+.home-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(201,162,77,0.4);
+}
 /* ABOUT SECTION */
 .about-section {
-  padding: 40px;
-  background-color: #ad9b67;
+  padding: 80px 40px;
+  background: linear-gradient(
+    135deg,
+    #7b1e3c,
+    #1c1c1c
+  );
+  color: white;
   text-align: center;
+}
+
+.about-section h2 {
+  color: #c9a24d;
+  font-size: 38px;
+  margin-bottom: 25px;
 }
 
 .about-section p {
-  max-width: 1050px;
-  margin: auto;
-  color: #000000;
-  text-align: center;
+  color: #f8f4ef;
+  line-height: 1.9;
+  font-size: 17px;
 }
 
 /* FOOTER */
 .footer {
+  background: #111;
+  color: white;
+  padding: 50px;
   display: flex;
   justify-content: space-around;
-  background-color: #1f1f1f;
-  color: white;
-  padding: 30px;
 }
 
 .footer h4 {
-  margin-bottom: 10px;
+  color: #c9a24d;
+}
+
+.footer p {
+  color: #d1d5db;
 }
 
 .admin-link {
@@ -100,5 +158,95 @@
 
 .admin-link:hover {
   color: #C9A24D;
+}
+
+.home-container {
+  padding: 70px 40px;
+  text-align: center;
+  background: #f8f4ef;
+}
+
+.home-title {
+  font-size: 40px;
+  color: #7b1e3c;
+  margin-bottom: 10px;
+}
+
+.home-subtitle {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 50px;
+}
+
+.special-banner {
+  padding: 70px;
+  background: linear-gradient(
+    135deg,
+    #c9a24d,
+    #f4d58d
+  );
+  text-align: center;
+}
+
+/* TESTIMONIALS SECTION */
+.testimonials-section {
+  padding: 80px 40px;
+  background: #f8f4ef;
+  text-align: center;
+}
+
+.testimonials-section h2 {
+  font-size: 38px;
+  color: #7b1e3c;
+  margin-bottom: 50px;
+}
+
+/* Testimonials Grid */
+.testimonials-container {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+/* Review Card */
+.testimonial-card {
+  width: 320px;
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(123,30,60,0.2);
+}
+
+.testimonial-card p {
+  color: #555;
+  line-height: 1.8;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+/* Customer Details */
+.customer-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.customer-name {
+  color: #7b1e3c;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.customer-rating {
+  color: #c9a24d;
+  font-size: 18px;
 }
 
